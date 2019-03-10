@@ -1,0 +1,401 @@
+12.13.18
+
+What I've done to New_Forest_game
+(1) I made prompt a method in the Scene class (just so I can use another method)
+(2) I made nothing a method in the Scene class, because it is something that will be called in every scene! and it also always has the same output! I accomplished this
+by taking what I had written in the nothing method in Edge, which consisted of a print
+statement, then reassigning self.up, then calling the prompt method... and writing that in
+the Scene_ class... then just doing the super(Edge_, self).nothing() in the Edge_ version
+of the method to call it. boom!
+(3)
+
+
+
+12.14.18
+(1) I added the Character_() class in the charac_fg.py file.
+(2) I added an attribute of this class to be the characters inventory.
+(3) I added the crawl function to Thorn
+(4) I tried to add the 'gold_key' to the character inventory!
+(5) I added a health attribute to the character class, and set it equal to int 10.
+(6) hmmmm the attribute that I have for health is able to be updated in multiple classes
+but I need that value to stay constant over classes... how can I do this?
+
+
+12.15.18
+(1) I still want to create a return function... maybe in scene??? or maybe in thorn idk...
+
+12.16.18
+(1) YAY, I figured out how to add scene specific actions to the prompt in the Scene (parent)
+class! woohoo! so in the elif statement, you put the words that lead to the action and then
+you also write 'and self.name == "name of room"'. So cool!
+(2) when you have a long list for an elif statement, and you are joining it with an and keyword
+make sure that you have the ending bracket and and on the same line! (LOOK AT PEP8)
+(3) accidentally found a bug, I cannot go back into Thorny patch after returning from it (Edge).... or go into the Pile scene...
+(4) still working on number 3, maybe using while loops in the runner?
+
+12.17.18
+(1) ok since I found that bug, I've just been working on trying to make a Runner class
+that actually allows me to enter and leave any room as many times as I want.
+What I realized is that instead of using if loops, it's better to use while loops b/c they
+obviously can run more than once (although I probably could have figured it out with
+for loops as well).
+Anyways... The way I fixed it was by ..
+1. having one "start" function that initiates edge
+2. establishing a class variable called location that is set equal to the self.name of
+each scene
+2. within the runner start function, having a while loop that reads true when the character
+location is == to the self.name string.
+3. splitting up the entrances into the other rooms into separate functions (into_x)
+4. from the move function of each scene, having a statement that says if x.right == 'str'
+then go into the entrance function. if there are multiple rooms having an elif with the same thing for a different room.
+5. In each the into_x functions, instantiating the class, by accessing it from the dict using the string of its name. [access the value with dictionary.get('str')
+6. including the conditional (on name) while loops there as well, and making sure that
+they ended by going into a specific scene.
+(2) we also cleaned up the enter and examine functions (and enter again) on our scenes
+by including if statements in the Scene parent class enter function! yay!
+an important thing to note is that even if in the parent class
+if you use a self.examine (referring to an attribute) it will refer to the subclass that
+you're in! wooo! wait.... no I was wrong... if you are referring to an attribute...
+maybe I just did it wrong... ok next bug! lol.
+
+
+12.18.18
+(1) I just let Catherine play for a second, and she selected crawl from the main prompt
+when she wasn't in Thorn and it caused the system to crash... how can I fix that?
+Ok I need to provide a route for the program to go when someone inputs a scene
+specific command and it doesn't go where I want it to.
+Now that I'm doing that I'm realizing that is going to grow my code a lot...
+so maybe I can use try-except to minimize the amount of code I need to copy and paste?
+Ok a quick fix for now (which I may have to update later) is just including an else clause
+at the end of all of the elif statements that leads to a function that prints an error message to the user
+and then resets the prompt method.
+
+(2)
+
+12.20.18
+(1) I wanted to make either an if statement or while loop that would
+allow the sticks, steel, and flint items to be combined into a torch
+once all three items were collected by the player
+I did so in the get_inven() function of charac_fg b/c I always call this after
+a new item is picked up! I used a code snippet I found from a forum...
+the snippet tests if multiple values are within a list, and if they are, it
+produces a value of True.
+e.g.
+while all(x in Character_.inven for x in ['sticks','flint','steel']) == True:
+...
+COOL!
+(2) I set up the user input differenlty in my Scene_.use_item() method
+Where instead of doing the accept_act = [list], then while not in list blah blah.
+I had a while loop that returned an error message while the item selected
+was not in the player's inventory.
+This was fine, but I realized that unless the player selected an item that was
+in the inventory, the player could not exit this loop.
+Therefore I left the while statement as is, but I included another input statement
+in the middle of the while clause, and following it with an *if statement
+that accounted for the entry of ANOTHER user input that wasn't in the inventory
+this time exiting the use_item() method and returning to the scene prompt method.
+I had to do this using return self.prompt() b/c by just putting self.prompt()
+in the if statement, I wasn't returning to the prompt properly.
+
+
+01.08.19
+ok I couldn't figure out where I was setting the characters location
+but I do it in Scene... in the enter method! I also have Character_ have a
+location attribute in its class (before the __init__) what is that called again?
+
+
+01.09.19
+I'm having trouble in the hole dungeon allowing myself to simultaneously have a while loop
+for not putting a,b, or c... and having another while loop accounting for if they choose
+b but they don't have a torch.
+aha!! YOU CAN actually have a while following an input thing! (Doesn't need to be elif)
+also you can have a while following a while! WOO!
+
+
+01.10.19
+I found a bug, in the thorn scene I typed 'use mirror' and nothing happened.
+ok GENERAL QUESTION : how can I have an if statement that finds a word within a sentence
+ooooh i can use REGEX right? for e.g. if it has USE in the input, I want it to go to the
+USE function... maybe...
+or another e.g. when I see the dung, I want to write... "examine dung"
+then I want to store the part of the thing that isn't dung as a variable
+and put it into an if statement once it gets to the other function...
+
+01.27.19
+I'm going to write my tests in pytest, because I can't find a lot of documentation on
+nose/nosetests... ugh.
+
+note to self: don't use setup_methods() and teardown_method() b/c  I don't know how
+to 'tear down' an instantiated class (or if that's even necessary).
+INSTEAD >>>> just use 'fixtures'
+you do this by adding @pytest.fixture above your setup test function.
+and then you put the name of that function within the parentheses of the other
+test functions.
+also you have to have import pytest at the beginning of the file now.
+
+01.28.19
+
+I want to finish writing my tests to get better at unit testing,
+https://stackoverflow.com/questions/35851323/pytest-how-to-test-a-function-with-input-call
+but first I want to finish my parser b/c that will affect how I write my unit tests...
+also how do I test the functionality of going into another class' method?
+--
+I'm working on the parser, and I wasn't sure how the parser was able to understand
+which nouns were objects and which were subjects since the parser_object and parser_subject
+methods are so similar.
+I realized that the trick to determining which is which is in the ordering of
+the calling of the methods within the parse_sentence method.
+---
+ok I made an important discovery with pytest in that you can include the function
+you are testing in your test method which really simplifies things.
+You just need to set up dummy data to add to the function, then test what you think
+the answer will be with the assert key words.
+I also understand .pop() for lists better now. We have a LIST of TUPLES.
+And what .pop(0) does is pop out the first tuple in the list. we save that tuple to a varaible (Word).
+then we use word[0] to get the token of that tuple.
+I got confused when I read the documentation b/c they said that .pop() returns the last
+value of the list... but that's if you don't include an index! word.
+
+
+01.29.19
+worked on the parser.py
+
+01.30.19
+
+I was stuck on how the test_verb() function worked... plz see the notes on test_parser.py
+for detail! b/c I figured it out!! yay.
+-I'm going to make the methods in parser.py part of a class now (a Parser class!) [DONE]
+-Now I need to fix the test_parser.py so it tests the class methods as opposed to functions... (i think)
+---
+ok I was having an annoying error where I had to specify the folder name in the python script import statement
+evne though I was importing a file/class from the same folder. I had to do this for pytest to work.
+e.g.
+form folder.module import class
+the problem was that the module then wouldn't run if I were to call it from the command line.
+so I finally fixed it by removing the directory name from the import statement in the script
+deleting the __init__.py file from the tests directory...
+ensuring that package = module folder in setup.py
+and finally using the import sys, .path (0 . '/path/to/module_folder') thing! within the test_parser.py file.
+
+
+1.31.19
+we're going to have to update the test_lexicon.py file b/c I've changed the scan method.
+I'm trying to implement the lexer/scanner/parser into my code now... running into some errors.
+Since I've already tested the parser and lexicon .py files separately, I'm thinking it
+may have to do with the fact that the input for parser is now being generated by the scanner
+and so the format may be different from my manually created tuple lists.
+
+
+2.1.19
+I fixed the parser.py such that when there is nothing left if the word_list to processa and parse_object get's called
+it doesn't cause the program to crash. I added an extra if statement for when this occurs, and had to
+add an instantiation of the Sentence() class in the __init__() method of Parser to return a dummy 'word'.
+I won't be using that 'word' at all, but for not it's just a work around to avoid the function returning None value.
+---
+hmm ok since all of the examine_ methods of each scene do the same thing... I'm trying to figure out how
+I can use the new input system to simplify the way that user input translates into that.
+
+The problem is that I want to have an if statement that accounts for 'examine' + 'scene_specific_object'
+which is already easy to write I just need to make sure that if s
+aha! I only need to make two if statements regarding examine if there are details to be examined in the scene.
+Otherwise one will suffice mentioning onlying action.verb == 'examine' and scene.name = "X"
+
+ALSO! I can use the sequence of if statements to help, by having scene specific detail ones FIRST
+then having a general if action.verb == 'examine' statement below for all non-scene specific examine things.
+-----
+Right now I will keep needing to put
+lexicon = Lexicon(self.input)
+    word_list = lexicon.scan()
+    print(word_list)
+    parse_var = Parser(word_list)
+    action = parse_var.parse_sentence()
+
+after every input... I should really make a function out of it... I need to be able to return to the function I'm in...
+wait I can just use return and that should solve that...
+
+ok yay! I managed to put that code into another function (parse_n_scan). I achieved this by setting up an instantiation of the parser
+in the __init__() of the Scene class. also I did return self.action.verb, self.action.subject.... at the end so the
+the other function could continue YAy!
+----
+ok I'm working on making the use item if statements, but I want to go back and fix parser/lexicon so that I can later
+reference a large variable that encompasses all of hte possible inputs so I can make a while loop that says if
+subj, verb, obj. not in this huge list, then please input something else!
+
+Also I want to learn how to use git...
+-----
+notes to self: I may have messed up my virtual env :/
+-bash: ./hello.py: Permission denied
+MacBook-Pro:git_exmp HomeFolder$ ls
+hello.py	myname.py
+MacBook-Pro:git_exmp HomeFolder$ chmod u+x hello.py
+MacBook-Pro:git_exmp HomeFolder$ ./hello.py
+
+if u experience problems, try googling: "how to undo chmod u+x"
+-----
+ok we can't just modify the pre-existing while loop to have the same functionality as before
+as far as the 'give ult tries to say something I understand' functionality goes.
+We can still provide that functinality, but we need to fix the parser to be able
+to process unknown input...
+
+2.2.19
+
+why does raising an error cause my code to crash, can I raise an error and then
+continue to run the program?
+>>>
+This may be naive but I'm going to get rid of the raise ParserError() thing
+and just put a dummy tuple there that I will ignore in the rest of my code...
+because I need to able to account for when the user inputs words that aren't within my list of words.
+
+2.3.19
+
+Awesome! it turns out I don't need a while loop to interpret invalid responses b/c
+all of elif statements lead to functions that eventually call .prompt() at the end of them!
+
+
+# TO SAVE SPACE HERE, it would be cool to have dictionary where each object that is scene
+    # specific was set up as a key:value thing wehre the object was the key and the value
+    # was the name of the room... such that ....
+
+ok I just finished updating all of the use_item things... which took forever. Next we'll
+finish up the rest and then also fix the move functionality...
+
+----
+OK BIG problem. I just typed in 'examine the area' and it led me to the logic path of
+having an answer that doesn't make sense just because 'the' was there.. which should be in stop words...
+
+also quit()/quit didn't work. [but this is after I got into the 'error zone']
+
+examine forest >> uhh.. also caused an error...wtf.
+
+hmmmm ok I'm thinking that the error is in setting up if action.verb in ['blah']
+b/c action.verb == 'quit' works fine.... hmmm this is sublte and annoying
+
+that means I can probably reset the error if statment backt o hwo it was.
+
+02.4.19
+
+ok my examine "x" statement (that is dependent on x and the scene location)
+isn't working b/c right now my generic examine if statement comes before it...
+lets see what happens when I just put this after the specific scene if statements...
+
+YES I was correct woot!
+---
+get help threw a parse_object raise error...
+
+I want to make a function within Scene, that accounts for all of the different movement scenes.
+
+self.move(SCENE, direction)
+
+Ok how can I write a move function that has those arguments?
+----
+we still need to set up directions for River and Gigantic tree.
+and everything else!
+We stopped at the LEFT direction setup!
+
+
+
+02.7.19
+
+in abandoned fire pit I said 'go left' then 'go right'
+and it died on me (I got stuck in nothingness).
+figure out why this happened...
+
+Ok it is specific to moving right within Abandoned fire... uhh.
+
+oh it's just b/c river isn't set up yet.
+
+Let's set up river and Gigantic tree...
+
+ok use fedora didnt work.
+
+
+02.8.19
+
+(1)
+Fedora is obviously in the inventory... but when I say 'wear fedora'
+the game goes to the if statemnt as if it weren't...
+if I type in 'use fedora' it just goes to the else statement for the function so ... wtf??
+
+(2)
+In thorny patch, I need to fix the tunnel thing to have access to the parser... also numbers for the parser!
+
+OK to solve this, we already have a token generator for numbers in our Lexicon.py file.
+I made a parse_number() function... but I'm not sure if it will wokr yet.
+I needed to add another attribute to the Sentence() class as well...
+I also updated parse_sentence() to include parse_number()
+
+
+(3)
+In the Thorn scene...I selected 1, got the mirror. but then when I tried 'inventory'
+it got stuck... check out that scene specific function plz.
+I moved crawl into Scene but I haven't updated it yet, or how to get to it, or updated the input to get parsed!
+
+(4)
+Use mirror also doesn't work! ugh.
+
+
+2.10.2019
+
+(1)
+I just realized that typing in 'check inventory' goes to the examine area if statement.
+
+(2)
+LOL I figured it out!!!! it was b/c those words weren't in the nouns category of my lexicon
+
+...sigh.
+
+
+wtf
+use fedora
+
+	OoOOoOps! You cannot use that command here!
+What dare the young lad try next?
+wear fedora
+           !
+            You place the fedora atop your little head
+            lookin' fresh, lad!
+
+
+02.11.2019
+
+move right in ABAN doesn't work...
+move up does though... wtf.
+
+Keep working on setting up River and Gigantic Tree's movement assignments! (z_runner and Scene)
+
+---
+
+I'm going to go back to the Flask tutorial! ok.
+
+02.13.2019
+
+'go into forest' --> didn't work!
+
+alright I'm trying to fix my picking up sticks, rocks and bag method entries by
+nesting them inside an if statement that starts with the truth that
+they are in the location Abandoned Forest.
+
+notes from testing this:
+'pick up sticks' > doesn't register probably becasue of 'pick up'
+*** ok can split group together a phrase?? if not... the word 'up' is problematic
+because up is used as a direction but I want to put it in the stop words...
+'check out bag' and 'check out sticks' both worked.
+'check out rocks' didn't work!
+just inventory by itself didn't work but check inventory did!
+'look at rocks' also didn't work.
+
+--
+** The reason why pick up sticks doesn't work is because pick is a verb
+and up is a direction which gets input into sentence as an OBJECT
+this leaves sticks to hang by the wayside....
+how can I account for multiple objects??/
+really in this case, 'up' is a stop word... but I also don't know how to fix
+the parser to handle that... ugh.
+
+"how to write a parser that interprets a word as an object and also in context as a word to be dropped"
+hmmm....
+
+ok finally fixed this by including an if clause in the number parser for an extra noun
+and then also having this syntax in my use_func method :
+elif (self.action.object in ['stick', 'sticks']
+      or self.action.number in ['stick', 'sticks']):

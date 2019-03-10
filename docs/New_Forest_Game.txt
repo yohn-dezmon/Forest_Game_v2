@@ -1,0 +1,152 @@
+OK new game time!! it is 7:25 pm on a Monday night (December 10th)
+
+I'm going to use the premise of my old game that I started in the first game exercise
+chapter of this book. But I'm going to start as much from scratch as possible
+and also follow his instructions which are:
+
+1. Use more than one file, and use import to use them.
+2. Use one class per room! and give classes names that fit their purpose.
+3. Your runner will need to know about these rooms, so make a class that runs the rooms.
+Consider having each room return what room is next or setting a variable of what room is next. (hint, look at his last game...)
+
+Premise of my game:
+You are an inexperienced lad, lacking in resources, and you have a rather large nose.
+You happen upon a forest where you think there may be food, shelter, and perhaps a magical potion to shrink your nose.
+GO!
+
+Areas:
+1. Gigantic Tree (that you can enter) [stairs, puzzle, nose-potion]
+2. Large patch of thorns... (key!, mirror)
+3. River (turtles, vine)
+4. Hole (chest, ogre, potion that cures your speech)
+5. beginning = edge of the forest. (fairy,
+6. Pile of dung (squirrels, fedora, witch!)
+7. abandoned fire (stuff to make torches, mini-puzzle?, soup?)
+
+How to get from one scene to the next.... ok let's have two options
+
+Start at the forest edge...
+to your left (west) and right (east) are the pile of dung and patch of thorns.........
+North is into the forest (make this kind of a halfway where west and east are nothing really)
+Continuing north you come across an abandoned fire
+from there north is the river and east is the river
+the hole is like a mini dungeon... so make it kind of challenging. Also you'll need fire to see.
+The river, you have to cross to get to the Gigantic tree
+the gigantic tree is the final dungeon!
+...
+
+Forest stuff/Stuff I want in the game:
+1. Understory (bushes, shrubs, young trees that are adapted to live in the shade of the canopy)
+2. Canopy
+3. Undergrowth (oooo let's have a big hole that we climb into!)
+4. Ogre
+5. Fairy
+6. Witch
+7. Giant
+8. squirrels
+9. turtles
+10. Big Nose Demons
+11. Chests
+12. Potion
+13. Sword
+14. Fedora
+15. key
+16. mirror
+17. Vines
+18. torches
+19. soup?
+
+Functionality:
+1. map/movement between scenes [check]
+2. inventory [check](its in the character class) (import the character class to scenes where necessary)
+3. health? (trying to implement with character class + thorn) [it worked!]
+4.
+
+
+
+idea to add to the game:
+#(1)have a witch who casts a spell on you that scrambles your speech (words = stuff.split(' '))
+#you'd have to do something, that will eventually get the speech back to normal (sorted(words))
+# (2) Have a soup where you add elements to a list (for i in range(0,6) - print(f"{i}") - element.append(i), where elements = [] set up before the for loo
+
+
+
+
+
+
+
+
+
+
+---------------------------
+problem1: I can only run python (terminal) in the_hard_way
+q1 > Why is that again?
+q2 > I can import the files into the z_runner if I have it in the_hard_way but the problem is that I need
+to reference the z_runner in my scenes so I can get there... otherwise how can I get to z_runner??
+>>>>
+PROBLEM1 SOLVED:
+>>>>
+My logic --> within runner (before 1) in each room, have attributes that are equal to self.direction = 'destination' (1) import edge (2) initiate edge as an attribute of Runner class (3) instantiate
+Runner below in the script (4) in a function of Runner, call one of edge's methods (5)
+in edges method, have another method that leads directly to a prompt
+(6) in the prompt have the user input something
+(7) if that something is right or east, return
+(8) (?) by returning self.right, you return its string to the Runner method! (yayyyy)
+(9) call that value in Runner like this 'self.Edge.right' where self.edge is the instantiation of Edge_()
+(10) have an if statement that says if that value is 'thorn' then
+(11) set identifier equal to Runner.scenes.get('thorn') where Runner is the class, scenes is a locally defined
+dictionary, and get is the method that gets the value for the key, which is 'thorn'.
+(12) the value of 'thorn' is the class Thorn_(), which can then be entered.
+
+problem 2: the attribute that I have for health is able to be updated in multiple classes
+but I need that value to stay constant over classes... how can I do this?
+>>>
+solution? : maybe I should use a class variable instead of an instance variable!
+https://www.python-course.eu/python3_class_and_instance_attributes.php
+>>>>
+
+
+problem 3: I need to make the game more user friendly, i.e. how can I have an if/elif
+thing that says "if user input CONTAINS go or forest, go into forest".
+
+problem 4: In trying to simplify my code, I'm trying to put repetitive functions into the
+scene class. But the problem I'm running into is that I previously had self.examine as a
+variable... but now I'm afraid its going to refer to the .examine of Scene_ instead
+of the scene I'm in...
+>>>>
+solution, since examine will be different and will be a class attribute for each scene, I'm just going
+to define it in each scene b/c it's easier for now... there probably is a way to fix this though.
+>>>>
+
+problem 5: I want to have the parent Scene_ prompt have general options, but I want to add SPECIFIC
+options for certain scenes. I tried doing this by redifing the Scene_.prompt() method using super
+and then writing 'if input in shrub: blah blah'. but it didn't work... I think I may need to write
+an input/identifier statement again... but this slightly defeats the purpose of using the prompt
+method in the parent class...
+
+I could just include shrub in the prompt method... but then if someone types shrub at any point in the
+game they will perform that action... which I don't want...
+also in the same vein, I could have shrub lead to Edge, but that would require having
+Edge be instantiated within Scene which is not good OOP logic
+https://softwareengineering.stackexchange.com/questions/219543/should-a-class-know-about-its-subclasses
+>>>>>>
+solution! - include the part of the modified function that is unique to the subclass BEFORE
+calling the superclass method! yayy!
+>>>>>>
+
+----------
+random python questions
+(1) What happens if you put a break in a while loop with no condition?
+does it just break the loop once it gets there... does that defeat the purpose of creating
+the while loop in the first place.
+
+-------
+things I know I'm doing wrong, but I'm ignoring for now b/c I want to finish the project
+
+(1) having my entire movement within one function of the runner class... there has to be a simpler way to do that with less if/elif statements.
+(2) my self.up = 'nothing thing is not robust, if the player were to input up again... it
+would crash the program... that's not good.
+(3) always having a limited set of options, and doing the if, elif, elif, elif...
+this seems like it requires a lot of code.. maybe I should define an action class or something
+where I could just have the standardized actions, and then have them equal to different
+outcomes within the scenes.

@@ -1,0 +1,92 @@
+https://stackoverflow.com/questions/4768479/using-switch-blocks-to-parse-input-for-a-text-adventure
+
+LOOK AT ERIC LIPPERT'S ANSWER:
+
+He says to "Build a proper lexer and parser"
+
+https://gamedev.stackexchange.com/questions/27004/how-should-i-parse-user-input-in-a-text-adventure-game
+
+^ Backs Naur form example...
+
+
+
+https://tomassetti.me/parsing-in-python/
+
+
+https://tomassetti.me/antlr-mega-tutorial/#python-setup
+
+PARSERS:
+
+parser generators (tools that can be used to generate the code for a parser)
+or compiler compiler.
+
+Libraries that create parsers are known as parser combinators.
+
+
+a parser is usally composed of a 'lexer' (or scanner, or tokenizer) and the proper parser.
+
+there do however exist some 'scannerless parsers'.
+
+The lexer scans the input and produces the matching tokens, the parser scans the tokens and produces
+the parsing result.
+
+
+EX(1)
+437 + 734
+
+The lexer scans the text, finds '4' '3' '7' and then a space. It's job is then
+to recognize these characters collectively constitute one toke type NUM.
+
+then it finds a plus symbol surrounded by spaces, this correponds to a token
+type PLUS
+
+then it finds another token of type NUM.
+
+*The parser will typically combine the tokens produced by the lexer and group them!
+
+the definitions used by lexers or parser are called RULES or PRODUCTIONS.
+
+ooooo there are RULES in the context of lexers and parsers!
+
+a lexer rule is what accounts for digits relating to a specific type.
+a parser rule is what accounts for several types constituting an expression.
+
+Scannerless parsers process directly the original text, instead of processing a list of tokens
+produced by a lexer.
+
+PARSE TREE AND ABSTRACT SYNTAX TREE:
+the two are similar but differ in their level of abstraction.
+
+parse tree > contains all the tokens which apeared in the program and  possibly a set of intermediate rules.
+usually a rule corresopnds to the type of a node. A parse tree is usually transformed in an AST by the user.
+
+
+Abstract Syntax Tree (AST): some info is lost, comments and grouping symbols are not represented.
+The grouping symbols are implicity defined by the structure of the tree.
+
+
+GRAMMAR:
+
+ a GRAMMAR is a formal description of a language that can be used to recognize its structure.
+
+ e.g. a rule for an if statement could be that the statement must start with "if" keyword, followed
+ by left parenthesis, an expression, a right parenthesis and a statement.
+
+ a RULE could reference other rules or TOKEN TYPES.
+
+ in the above example, the keyword "if" and the left and right parenthesis were TOKEN TYPES.
+
+ BACKUS_NAUR FORM (BNF) Grammar (format) !!!
+ the EXTENDED BACKUS-NAUR FORM has the advantage of including a simple way to denote repetitions.
+
+
+
+9. DESIGNING A DATA FORMAT:
+
+(1) there are not going to be paragraphs, and thus we can use newlines as separators
+between the messages.
+(2) we wnat to allow emoticons, mentions and links. We are not going to support HTML tags.
+(3) since our chat is going to be for teenagers, we want to SHOUT and color our text.
+
+FRAGMENTS (rules) are reusable building blocks for lexer rules.
+you define them and then you refer to them in lexer rules.

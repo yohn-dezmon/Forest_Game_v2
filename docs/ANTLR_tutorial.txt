@@ -1,0 +1,56 @@
+a limitation of regular expressions is the lack of recursion!
+i.e. you can't find a regular expression inside anothe one (fo real?)
+
+also regular expressions are not scaleable! (they require lots of
+maintenance)
+
+set up:
+get a grammar, and put it in the same folder as your python folder.
+The  file must have the same name as the grammar...
+which must be delcared at the top of the file.
+
+e.g. the grammar is called Chat adn teh file is Chat.g4
+
+>>>
+antlr4 -Dlanguage=Python3 Chat.g4
+>>>>
+pip install antlr4-python3-runtime
+
+lexer rules are all upper case.
+parser rules are all lower case.
+
+rules are typically written in the order (1) parser rules (2) lexer rules.
+
+the lexer rules are analyzed in the order they appear...
+
+THE BASIC SYNTAX OF A RULE:
+there is a name, a colon, the definition of the rule, and a terminating semicolon.
+
+# parser rule
+
+addition : NUMBER '+' NUMBER ;
+
+# lexer rules
+(this stuff is now in the g4 file... which I'm not sure it;s supposed to be...)
+
+
+we IGNORE whitespace and comments while parsing!
+
+
+
+CREATING A GRAMMAR:
+
+Top-Down:
+what are the sections of your (python) file?
+-importing libraries/modules
+-defining functions
+-calling functions
+-loops
+
+Bottom-up:
+defining lexer rules, then making rules for the file itself (sounds better)
+
+
+LEXER RULES:
+
+the lexer rules are actually at the end of files...

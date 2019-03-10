@@ -1,0 +1,39 @@
+A COMMON PATTERN FOR UNIT TESTING (fixtures):
+
+def test():
+   setup_test()
+   try:
+      do_test()
+      make_test_assertions()
+   finally:
+      cleanup_after_test()
+
+
+setup_test is a function that creates necessary objects, opens database connections,
+
+do_test() actually does the things in question
+
+make_test_assertion() checks to see if the test completed successfully.
+
+cleanup_after_test() tears down the fixtures for each test.
+
+you can instead write...
+
+def test():
+  do_test()
+  make_test_assertions()
+
+test.setUp = setup_test
+test.tearDown = cleanup_after_test
+
+hmmmm ok the kind of setup and teardown functions i want are Class method level fixtures.
+
+these run multiple times, once for each test method! yay.
+
+class TestClass():
+
+  def setup(self):
+    pass
+
+  def teardown(self):
+    pass
