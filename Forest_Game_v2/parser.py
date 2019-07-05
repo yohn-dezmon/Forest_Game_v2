@@ -1,6 +1,7 @@
 # the import as such was necessary for pytest to run... but the directory NAME
 # needs to be removed if you are to actually run the parser.py file
 # I had my tests in test folder and my scripts in a folder called NAME both within a project folder.
+
 from lexicon import Lexicon
 
 
@@ -97,6 +98,7 @@ class Parser(object):
             return self.sentence.object
         else:
             raise ParserError("Expected a noun or direction next.")
+
 
     def parse_subject(self, word_list):
         self.skip('stop')

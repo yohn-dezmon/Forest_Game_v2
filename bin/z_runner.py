@@ -44,7 +44,7 @@ class Runner(object):
         # Here the enter method is called for the Edge_ scene.
         edge.enter()
 
-        while Character_.location == "Edge of Forest":
+        while Character_.location in ["Edge of Forest", 'location']:
             # This while loop takes the value of the scenes directional attributes
             # and calls functions that allow entry into other scenes.
             edge = Runner.scenes.get('edge')

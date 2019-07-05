@@ -1,0 +1,8 @@
+Fixtures don’t work like this. They cannot magically transfer the name a from one
+function’s (setup) local scope to another’s (test). Instead, your setup function
+must explicitly return the object that will be passed as the setup argument to
+your test function.
+
+https://pybit.es/pytest-fixtures.html
+
+@pytest.mark.parametrize to run a test with a different set of input and expected values. This addresses the same need to keep your code slim avoiding duplication.

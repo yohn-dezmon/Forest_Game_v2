@@ -45,23 +45,23 @@ class Edge_(Scene.Scene_):
     def use_func(self):
         super(Edge_, self).use_func()
 
-    def move(self):
+    # def move(self):
         # This method on all scenes allows the user's input to be translated
         # to a string that is then used as a key to call a value from a dictionary
         # in the z_runner.py module.
-        self.input = input("Which direction would you like to go? \n")
-        super(Edge_, self).move()
-        if self.input.lower() in ['right', 'east']:
-            self.right = 'thorn'
-            return self.right
-        elif self.input.lower() in ['left','west']:
-            self.left = 'pile'
-            return self.left
-        elif self.input.lower() in ['down','south']:
-            self.down = 'aban_fire'
-            return self.down
-        elif self.input.lower() in ['up','north']:
-            self.nothing_()
+        # self.input = input("Which direction would you like to go? \n")
+        # super(Edge_, self).move()
+        # if self.input.lower() in ['right', 'east']:
+        #     self.right = 'thorn'
+        #     return self.right
+        # elif self.input.lower() in ['left','west']:
+        #     self.left = 'pile'
+        #     return self.left
+        # elif self.input.lower() in ['down','south']:
+        #     self.down = 'aban_fire'
+        #     return self.down
+        # elif self.input.lower() in ['up','north']:
+        #     self.nothing_()
 
 
 

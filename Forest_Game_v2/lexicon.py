@@ -10,8 +10,8 @@ class Lexicon(object):
         'pricked','prick', 'leave']
         self.stop_words = ['the','green','out','into', 'in','off' 'of', 'from',
          'at','it','to','my']
-        self.nouns = ['hp','scene','tunnel','shrub','door','hole','tree','bag',
-        'around','thorns','rocks','rock','stick','sticks','bag','shrub',
+        self.nouns = ['hp','scene','tunnel','shrubs','door','hole','tree','bag',
+        'around','thorns','rocks','rock','stick','sticks','bag','shrub','trees',
         'inventory','instructions','help','steel','flint','thorns', 'player',
          'bear', 'princess', 'fedora', 'mirror', 'cabinet', 'key','forest','woods'
          ,'buttox','butt','bum','ass','bottom','fish']

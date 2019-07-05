@@ -21,6 +21,8 @@ class Scene_(object):
         self.solved = False
         self.up = '-'
         self.down = '-'
+        self.left = '-'
+        self.right= '-'
         # self.input = '-'
         self.examine = '-'
         self.usr_inp = '-'
@@ -56,13 +58,19 @@ class Scene_(object):
 
         """)
         print("-"*50)
-        time.sleep(1.0)
+        time.sleep(2.0)
 
         if Character_.location == "Pile of Dung":
             # This is an example of a specific greeting, in this case when the
             # character enters the Pile of Dung scene.
             print("""
             OoOoOO what is that smell?! Ahhhh, it's a large pile of dung!
+            """)
+        elif Character_.location == "Gigantic Tree":
+
+            print("""
+
+As you
             """)
 
         elif Character_.location == "Edge of Forest" and self.enter_var == 'b':
@@ -82,6 +90,18 @@ class Scene_(object):
 
     [please type help for instructions!]
             """)
+            time.sleep(6.0)
+            print("\t.")
+            time.sleep(1.0)
+            print("\t\t.")
+            time.sleep(1.0)
+            print("\t\t\t.")
+            time.sleep(1.0)
+            print("\t\t.")
+            time.sleep(1.0)
+            print("\t.")
+            time.sleep(2.0)
+            self.instructions()
 
         elif Character_.location == "River":
             print("""
@@ -157,6 +177,14 @@ go to sit, you prick your buttox on something!
             Character_.increase_hp()
             self.prompt()
 
+        elif (self.action.subject in ['shrub','shrubs'] and
+         self.name == 'Edge of Forest'):
+            print("\nMmmm you eat some of the shrub fruit")
+
+            Character_.increase_hp()
+            self.prompt()
+
+
         elif (self.action.verb in ['examine','inspect','look','check',
         'pricked','prick'] and self.action.object in bum_words):
             self.spirit()
@@ -229,6 +257,10 @@ go to sit, you prick your buttox on something!
             Character_.get_inven()
             self.prompt()
 
+        elif self.action.subject in ['inventory','item','items']:
+            Character_.get_inven()
+            self.prompt()
+
         elif (self.action.verb in ['examine','inspect','look','check']):
             self.examine_()
 
@@ -281,7 +313,7 @@ go to sit, you prick your buttox on something!
 
     def move_left(self):
 
-        if self.name == 'Edge of Forest':
+        if self.name in ['Edge of Forest', '-']:
             self.left = 'pile'
             return self.left
 
@@ -420,24 +452,32 @@ go to sit, you prick your buttox on something!
         self.prompt()
 
     def instructions(self):
-        print(""""
-        LIST OF COMMANDS:
-
+        print("""
+        LIST OF COMMANDS (please read carefully!):""")
+        time.sleep(3.0)
+        print("""
         MOVEMENT COMMANDS
-        (type move, then any of the following):
+        Type 'move', then any of the following:
 
         up, north - move to the scene north of your character
         down, south - move to the scene south of your character
         left, west - move to the scene west of your character
-        right, east - move to the scene east of your character
+        right, east - move to the scene east of your character""")
+        time.sleep(5.0)
+        print("""
 
         GENERAL SCENE COMMANDS:
 
-        examine - allows you to examine the scene [or a particular object]
+        examine (object/area) - allows you to examine the scene [or a particular
+        object]
         help - will print this list of commands
         inventory - displays a list of the items your have in your inventory
-        use - combined with an item in your inventory, will allow you to use it
-        health - view your current health
+        use (object within inventory)- combined with an item in your inventory,
+        will allow you to use it
+        health - view your current health""")
+        time.sleep(7.0)
+
+        print("""
 
         SCENE SPECIFIC COMMANDS:
 
@@ -449,17 +489,11 @@ go to sit, you prick your buttox on something!
         rocks - allows you to inspect the rocks
 
         """)
+        time.sleep(5.0)
         self.prompt()
 
     def break_loop(self):
         self.prompt()
-
-
-
-
-
-
-
 
 
 

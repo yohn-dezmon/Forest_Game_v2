@@ -2,7 +2,7 @@ import pytest
 
 import sys, os
 myPath = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, '/Users/HomeFolder/projects/Forest_Game/Forest_Game')
+sys.path.insert(0, '/Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2')
 
 from parser import Parser
 

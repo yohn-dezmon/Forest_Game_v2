@@ -53,7 +53,7 @@ You find a piece of bark with the letters 'HISF' written on it
             print("No no no! Think boi boi think!")
             self.spirit_inp()
 
-        if usr_input == 'fish':
+        if usr_input.lower() == 'fish':
             print("""
     Yes yes! The Hungry Man's F...
 IS FISH! jajajajajajajaj
@@ -82,6 +82,8 @@ The wise man goes to say something else, but before he can... you
 reach the other side of the river and hop off!
             """)
             time.sleep(8.0)
+            self.action.verb == 'go'
+            self.action.object == 'right'
             self.move_right()
 
 
