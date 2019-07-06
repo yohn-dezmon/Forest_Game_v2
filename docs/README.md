@@ -5,7 +5,7 @@ different areas within a forested landscape.
 
 ### Set-up of files:
 
-The runner class is within the bin folder and is entitled 'z_runner.py'. If you download
+The runner class is within the **bin folder** and is entitled **z_runner.py.** If you download
 this repository, you can run the game from the command line using:
 $ python3 z_runner.py  
 
