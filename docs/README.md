@@ -15,7 +15,8 @@ The first two lines of z_runner.py are what allow me to import the files from th
 import sys
 sys.path.insert(0, '/Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2')
 
-If you are using this set of modules/classes on your computer, please update the pathway names accordingly. Thank you!
+If you are using this set of modules/classes on your computer, please update the pathway names accordingly. The majority of the code for this application is within the **Scene.py** parent class  
+within the **Forest_Game_v2** folder.
 
 ### Functionalities that I was able to successfully execute:
 
