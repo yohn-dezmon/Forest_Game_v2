@@ -90,17 +90,17 @@ As you
 
     [please type help for instructions!]
             """)
-            # time.sleep(6.0)
-            # print("\t.")
-            # time.sleep(1.0)
-            # print("\t\t.")
-            # time.sleep(1.0)
-            # print("\t\t\t.")
-            # time.sleep(1.0)
-            # print("\t\t.")
-            # time.sleep(1.0)
-            # print("\t.")
-            # time.sleep(2.0)
+            time.sleep(6.0)
+            print("\t.")
+            time.sleep(1.0)
+            print("\t\t.")
+            time.sleep(1.0)
+            print("\t\t\t.")
+            time.sleep(1.0)
+            print("\t\t.")
+            time.sleep(1.0)
+            print("\t.")
+            time.sleep(2.0)
             self.instructions()
 
         elif Character_.location == "River":
