@@ -24,6 +24,7 @@ class Edge_(Scene.Scene_):
         # You can see the different text that is displayed in the enter method
         # of the Scene_ class.
         self.enter_var = 'b'
+        self.name = "Edge of Forest"
         super(Edge_, self).enter()
 
 
@@ -45,7 +46,12 @@ class Edge_(Scene.Scene_):
     def use_func(self):
         super(Edge_, self).use_func()
 
-    # def move(self):
+    def instructions(self):
+        super(Edge_, self).instructions()
+
+    # def moveleft(self):
+    #     self.left = 'pile'
+    #     return self.left
         # This method on all scenes allows the user's input to be translated
         # to a string that is then used as a key to call a value from a dictionary
         # in the z_runner.py module.
@@ -65,5 +71,5 @@ class Edge_(Scene.Scene_):
 
 
 
-b = Edge_()
+# b = Edge_()
 z = Character_()

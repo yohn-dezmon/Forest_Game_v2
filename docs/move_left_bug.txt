@@ -1,0 +1,99 @@
+move left bug stack trace:
+
+
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(318)move_left()->'pile'
+-> return self.left
+(Pdb) n
+--Return--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(221)prompt()->None
+-> self.move_left()
+(Pdb) s
+--Return--
+
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Edge.py(44)prompt()->None
+-> super(Edge_, self).prompt()
+(Pdb) p(self.left)
+'pile'
+(Pdb) s
+--Return--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(493)instructions()->None
+-> self.prompt()
+(Pdb) s
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(119)enter()
+-> self.prompt()
+(Pdb) s
+--Call--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Edge.py(43)prompt()
+-> def prompt(self):
+(Pdb) s
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Edge.py(44)prompt()
+-> super(Edge_, self).prompt()
+(Pdb) s
+--Call--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(151)prompt()
+-> def prompt(self):
+(Pdb) p(self.left)
+'pile'
+(Pdb) n
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(155)prompt()
+-> usr_input = input("What dare the young lad try next? \n")
+(Pdb) n
+
+
+
+
+
+
+
+
+3432078023840239840238402394
+
+
+
+(Pdb) p(self.action.verb)
+'move'
+(Pdb) p(self.action.object)
+'left'
+(Pdb) n
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(220)prompt()
+-> in ['left', 'west']):
+(Pdb) n
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(221)prompt()
+-> self.move_left()
+
+(Pdb) s
+--Call--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(314)move_left()
+-> def move_left(self):
+(Pdb) n
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(316)move_left()
+-> if Character_.location == "Edge of Forest" or self.name in ['Edge of Forest', '-']:
+(Pdb) n
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(317)move_left()
+-> self.left = 'pile'
+(Pdb) n
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(318)move_left()
+-> return self.left
+(Pdb) s
+--Return--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(318)move_left()->'pile'
+-> return self.left
+(Pdb) s
+--Return--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(221)prompt()->None
+-> self.move_left()
+(Pdb) s
+--Return--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Edge.py(44)prompt()->None
+-> super(Edge_, self).prompt()
+(Pdb) s
+--Return--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Scene.py(119)enter()->None
+-> self.prompt()
+(Pdb) s
+--Return--
+> /Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2/Edge.py(28)enter()->None
+-> super(Edge_, self).enter()
+(Pdb) s
+> /Users/HomeFolder/projects/Forest_Game_v2/bin/z_runner.py(48)start_edge()
+-> if edge.right == 'thorn':

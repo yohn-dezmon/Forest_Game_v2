@@ -1,3 +1,4 @@
+import pdb
 import sys
 sys.path.insert(0, '/Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2')
 
@@ -42,12 +43,11 @@ class Runner(object):
         # Here the edge key is used to instantiate the Edge_ class/scene.
         edge = Runner.scenes.get('edge')
         # Here the enter method is called for the Edge_ scene.
+        Character_.location = "Edge of Forest"
         edge.enter()
-
         while Character_.location in ["Edge of Forest", 'location']:
             # This while loop takes the value of the scenes directional attributes
             # and calls functions that allow entry into other scenes.
-            edge = Runner.scenes.get('edge')
             if edge.right == 'thorn':
                 self.into_thorn()
             elif edge.left == 'pile':
@@ -123,8 +123,9 @@ class Runner(object):
             if hole.name == 'Hole' and hole.up == 'aban_fire':
                 self.into_fire()
 
-
-
+# debugging to fix 'move left' call in initial Edge of Forest map
+pdb.set_trace()
 c = Character_()
 b = Runner()
+
 b.start_edge()

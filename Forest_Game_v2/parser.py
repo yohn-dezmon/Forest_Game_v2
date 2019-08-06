@@ -28,6 +28,7 @@ class Parser(object):
 
     def __init__(self, word_list):
     # setting up the word_list specific to the class
+    # perhaps I need a class variable for direction?
         self.word_list = word_list
         self.subj = ('dummy', 'word')
         self.verb = ('dummy', 'word')

@@ -90,17 +90,17 @@ As you
 
     [please type help for instructions!]
             """)
-            time.sleep(6.0)
-            print("\t.")
-            time.sleep(1.0)
-            print("\t\t.")
-            time.sleep(1.0)
-            print("\t\t\t.")
-            time.sleep(1.0)
-            print("\t\t.")
-            time.sleep(1.0)
-            print("\t.")
-            time.sleep(2.0)
+            # time.sleep(6.0)
+            # print("\t.")
+            # time.sleep(1.0)
+            # print("\t\t.")
+            # time.sleep(1.0)
+            # print("\t\t\t.")
+            # time.sleep(1.0)
+            # print("\t\t.")
+            # time.sleep(1.0)
+            # print("\t.")
+            # time.sleep(2.0)
             self.instructions()
 
         elif Character_.location == "River":
@@ -115,8 +115,10 @@ You take a seat to catch some rest on the bank of the river, and as you
 go to sit, you prick your buttox on something!
             """)
 
+
         # This is necessary to allow the player to continue playing.
         self.prompt()
+
 
 
     def nothing_(self):
@@ -313,7 +315,8 @@ go to sit, you prick your buttox on something!
 
     def move_left(self):
 
-        if self.name in ['Edge of Forest', '-']:
+        if self.name == 'Edge of Forest':
+            self.enter_var = 'a'
             self.left = 'pile'
             return self.left
 
@@ -490,7 +493,10 @@ go to sit, you prick your buttox on something!
 
         """)
         time.sleep(5.0)
-        self.prompt()
+        # hmm.. should this be Scene.prompt() instead of self.prompt() which leads to
+        # Edge.py?
+        # Edge_.enter_again()
+
 
     def break_loop(self):
         self.prompt()
