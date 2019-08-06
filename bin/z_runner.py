@@ -1,4 +1,4 @@
-import pdb
+# import pdb
 import sys
 sys.path.insert(0, '/Users/HomeFolder/projects/Forest_Game_v2/Forest_Game_v2')
 
@@ -124,7 +124,7 @@ class Runner(object):
                 self.into_fire()
 
 # debugging to fix 'move left' call in initial Edge of Forest map
-pdb.set_trace()
+# pdb.set_trace()
 c = Character_()
 b = Runner()
 

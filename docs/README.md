@@ -1,7 +1,9 @@
 # Forest Game
 
 This is a text-based adventure, in which you control a character as he moves through  
-different areas within a forested landscape.
+different areas within a forested landscape. I have written the application from scratch  
+except for the files parser.py and lexicon.py which were modified from the exercises  
+48 and 49 of Zed Shaw's Learn Python the Hard Way.
 
 ### Set-up of files:
 
@@ -31,7 +33,7 @@ circumstances in the game.
 ### Shortcomings:
 
 (1) The program as is is not written up to PEP8 standards.  
-(2) The game itself is not entirely finished, some of the scenes later on in the game lack detail.
+(2) The game itself is not entirely finished, some of the scenes later on in the game lack detail.  
 (3) Certain parsing errors will currently cause the application to close.   
 
 ### Game play:
